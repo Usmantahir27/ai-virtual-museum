@@ -1,0 +1,1066 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+
+  :root {
+    --sand: #C9A96E;
+    --sand-light: #E8D5A3;
+    --sand-dark: #8B6914;
+    --obsidian: #1A1410;
+    --ochre: #B8860B;
+    --terracotta: #C1440E;
+    --stone: #6B5E4A;
+    --parchment: #F5EDD6;
+    --gold: #D4A017;
+    --lapis: #1B3A6B;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body { font-family: 'Cormorant Garamond', serif; color: var(--color-text-primary); }
+
+  .museum-plan {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  /* Header */
+  .plan-header {
+    text-align: center;
+    padding: 2.5rem 2rem 2rem;
+    border-bottom: 1px solid var(--color-border-tertiary);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .plan-header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--sand), var(--gold), var(--sand), transparent);
+  }
+
+  .plan-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .plan-title {
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .plan-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--color-text-secondary);
+    font-weight: 300;
+  }
+
+  /* Nav Tabs */
+  .tab-nav {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--color-border-tertiary);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .tab-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    padding: 14px 20px;
+    border: none;
+    background: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .tab-btn.active {
+    color: var(--color-text-primary);
+    border-bottom-color: var(--color-text-primary);
+  }
+
+  .tab-btn:hover:not(.active) {
+    color: var(--color-text-primary);
+  }
+
+  /* Tab content */
+  .tab-panel { display: none; padding: 2rem; }
+  .tab-panel.active { display: block; }
+
+  /* Section titles */
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--color-text-primary);
+  }
+
+  .section-desc {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── DESIGN SYSTEM ── */
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    margin-bottom: 1.5rem;
+  }
+
+  .swatch {
+    border-radius: 6px;
+    overflow: hidden;
+    border: 0.5px solid var(--color-border-tertiary);
+  }
+
+  .swatch-color {
+    height: 56px;
+  }
+
+  .swatch-info {
+    padding: 6px 8px;
+    background: var(--color-background-secondary);
+  }
+
+  .swatch-name {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--color-text-secondary);
+    display: block;
+  }
+
+  .swatch-hex {
+    font-family: monospace;
+    font-size: 10px;
+    color: var(--color-text-tertiary);
+  }
+
+  .type-specimen {
+    background: var(--color-background-secondary);
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border: 0.5px solid var(--color-border-tertiary);
+  }
+
+  .font-display {
+    font-family: 'Cinzel', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+
+  .font-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--color-text-secondary);
+    font-weight: 300;
+  }
+
+  .font-meta {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--color-text-tertiary);
+    margin-top: 8px;
+  }
+
+  /* ── PAGES ── */
+  .pages-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+
+  .page-card {
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  .page-card:hover {
+    border-color: var(--color-border-primary);
+  }
+
+  .page-card-header {
+    padding: 14px 16px 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .page-num {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    min-width: 20px;
+    padding-top: 2px;
+  }
+
+  .page-name {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 4px;
+  }
+
+  .page-desc {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .page-features {
+    padding: 0 16px 14px 46px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .feature-badge {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    border: 0.5px solid var(--color-border-tertiary);
+    color: var(--color-text-secondary);
+    background: var(--color-background-secondary);
+  }
+
+  .badge-3d { border-color: var(--color-border-info); color: var(--color-text-info); background: var(--color-background-info); }
+  .badge-anim { border-color: var(--color-border-warning); color: var(--color-text-warning); background: var(--color-background-warning); }
+  .badge-db { border-color: var(--color-border-success); color: var(--color-text-success); background: var(--color-background-success); }
+
+  /* ── TECH STACK ── */
+  .stack-section { margin-bottom: 1.5rem; }
+
+  .stack-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--color-text-tertiary);
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .stack-item {
+    background: var(--color-background-secondary);
+    border-radius: var(--border-radius-md);
+    padding: 12px;
+    border: 0.5px solid var(--color-border-tertiary);
+  }
+
+  .stack-name {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 3px;
+  }
+
+  .stack-purpose {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+    font-weight: 300;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline-vis {
+    position: relative;
+    padding: 1rem 0;
+  }
+
+  .timeline-line {
+    position: absolute;
+    left: 80px;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: var(--color-border-tertiary);
+  }
+
+  .timeline-era {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .era-date {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    color: var(--color-text-tertiary);
+    min-width: 72px;
+    text-align: right;
+    padding-top: 3px;
+    line-height: 1.3;
+  }
+
+  .era-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: 1.5px solid var(--color-border-primary);
+    background: var(--color-background-primary);
+    margin-top: 4px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .era-content {
+    flex: 1;
+  }
+
+  .era-name {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 2px;
+  }
+
+  .era-civ {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    font-weight: 300;
+    margin-bottom: 4px;
+  }
+
+  .era-artifacts {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── DB SCHEMA ── */
+  .schema-table {
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
+
+  .schema-header {
+    background: var(--color-background-secondary);
+    padding: 8px 12px;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .schema-row {
+    padding: 6px 12px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+
+  .schema-row:last-child { border-bottom: none; }
+
+  .field-name {
+    font-family: monospace;
+    font-size: 11px;
+    color: var(--color-text-info);
+    min-width: 120px;
+  }
+
+  .field-type {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    min-width: 80px;
+    font-family: monospace;
+  }
+
+  .field-note {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    font-weight: 300;
+  }
+
+  /* ── IMPLEMENTATION ── */
+  .phase-card {
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+
+  .phase-header {
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--color-background-secondary);
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+
+  .phase-num {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-text-tertiary);
+    min-width: 28px;
+  }
+
+  .phase-title {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 2px;
+  }
+
+  .phase-duration {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    font-weight: 300;
+  }
+
+  .phase-tasks {
+    padding: 12px 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .task-item {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    line-height: 1.4;
+    font-weight: 300;
+  }
+
+  .task-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color-border-primary);
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  /* ── UX PRINCIPLES ── */
+  .ux-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+
+  .ux-card {
+    padding: 16px;
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    background: var(--color-background-secondary);
+  }
+
+  .ux-icon {
+    font-size: 20px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .ux-title {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 5px;
+  }
+
+  .ux-body {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .separator {
+    border: none;
+    border-top: 0.5px solid var(--color-border-tertiary);
+    margin: 1.5rem 0;
+  }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+</style>
+
+<div class="museum-plan">
+  <div class="plan-header">
+    <div class="plan-eyebrow">Master Blueprint — Version 1.0</div>
+    <div class="plan-title">Archaion Virtual Museum</div>
+    <div class="plan-subtitle">A Digital Sanctuary of Human Antiquity</div>
+  </div>
+
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('design')">Design System</button>
+    <button class="tab-btn" onclick="switchTab('pages')">Pages & Features</button>
+    <button class="tab-btn" onclick="switchTab('3d')">3D & Timeline</button>
+    <button class="tab-btn" onclick="switchTab('database')">Artifact Database</button>
+    <button class="tab-btn" onclick="switchTab('tech')">Tech Stack</button>
+    <button class="tab-btn" onclick="switchTab('build')">Build Plan</button>
+  </div>
+
+  <!-- DESIGN SYSTEM -->
+  <div id="tab-design" class="tab-panel active">
+    <div class="section-label">Identity</div>
+    <div class="section-title">Design Philosophy</div>
+    <div class="section-desc">The visual language draws from stone relief carvings, ancient manuscript illumination, and the warm material palette of the ancient world — sandstone, obsidian, ochre, lapis lazuli, and aged gold. Every interaction should feel like unwrapping an artefact.</div>
+
+    <div class="section-label">Colour Palette</div>
+    <div class="palette-grid">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#C9A96E"></div>
+        <div class="swatch-info"><span class="swatch-name">SANDSTONE</span><span class="swatch-hex">#C9A96E</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#D4A017"></div>
+        <div class="swatch-info"><span class="swatch-name">AGED GOLD</span><span class="swatch-hex">#D4A017</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1A1410"></div>
+        <div class="swatch-info"><span class="swatch-name">OBSIDIAN</span><span class="swatch-hex">#1A1410</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#C1440E"></div>
+        <div class="swatch-info"><span class="swatch-name">TERRACOTTA</span><span class="swatch-hex">#C1440E</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1B3A6B"></div>
+        <div class="swatch-info"><span class="swatch-name">LAPIS</span><span class="swatch-hex">#1B3A6B</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F5EDD6"></div>
+        <div class="swatch-info"><span class="swatch-name">PARCHMENT</span><span class="swatch-hex">#F5EDD6</span></div>
+      </div>
+    </div>
+
+    <div class="section-label">Typography</div>
+    <div class="type-specimen">
+      <div class="font-display">Archaion Museum</div>
+      <div class="font-body">Where the ancient world speaks through stone, clay, and gold</div>
+      <div class="font-meta">DISPLAY — CINZEL SERIF · BODY — CORMORANT GARAMOND</div>
+    </div>
+
+    <hr class="separator">
+
+    <div class="section-label">Visual Language Rules</div>
+    <div class="ux-grid">
+      <div class="ux-card">
+        <div class="ux-title">Texture as atmosphere</div>
+        <div class="ux-body">Subtle noise overlays on backgrounds simulate stone and parchment. SVG displacement filters on hero sections. Never garish — always whispered.</div>
+      </div>
+      <div class="ux-card">
+        <div class="ux-title">Gold as accent, never fill</div>
+        <div class="ux-body">Gold (#D4A017) reserved strictly for interactive elements, borders on featured artifacts, and decorative ornaments. Primary text stays obsidian.</div>
+      </div>
+      <div class="ux-card">
+        <div class="ux-title">Reverent pacing</div>
+        <div class="ux-body">All transitions 600–900ms. Easing curves that feel like slow stone sliding. No snappy, modern pop — everything breathes and settles.</div>
+      </div>
+      <div class="ux-card">
+        <div class="ux-title">Ornamental geometry</div>
+        <div class="ux-body">Greek meander, Islamic arabesque, and Egyptian lotus patterns as SVG dividers and border details. Never digital-looking gradients.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGES & FEATURES -->
+  <div id="tab-pages" class="tab-panel">
+    <div class="section-label">Site Architecture</div>
+    <div class="section-title">Six Core Experiences</div>
+    <div class="section-desc">Each page is a distinct spatial experience. Navigation between them should feel like moving between chambers of a real museum.</div>
+
+    <div class="pages-grid">
+      <div class="page-card">
+        <div class="page-card-header">
+          <div class="page-num">01</div>
+          <div>
+            <div class="page-name">The Grand Entrance</div>
+            <div class="page-desc">Full-screen 3D WebGL portal. Ancient columns frame a glowing threshold. Particles drift like ancient dust. Scroll to enter.</div>
+          </div>
+        </div>
+        <div class="page-features">
+          <span class="feature-badge badge-3d">Three.js</span>
+          <span class="feature-badge badge-anim">GSAP scroll</span>
+          <span class="feature-badge">Ambient audio</span>
+        </div>
+      </div>
+
+      <div class="page-card">
+        <div class="page-card-header">
+          <div class="page-num">02</div>
+          <div>
+            <div class="page-name">The Chronicle</div>
+            <div class="page-desc">Horizontal scroll timeline spanning 3.3 million years. Civilizations appear as glowing nodes on a stone-textured band.</div>
+          </div>
+        </div>
+        <div class="page-features">
+          <span class="feature-badge badge-anim">Horizontal scroll</span>
+          <span class="feature-badge badge-3d">SVG canvas</span>
+          <span class="feature-badge">Click to explore</span>
+        </div>
+      </div>
+
+      <div class="page-card">
+        <div class="page-card-header">
+          <div class="page-num">03</div>
+          <div>
+            <div class="page-name">The Collection</div>
+            <div class="page-desc">Masonry grid of artifacts. Filter by civilization, era, material, type. Each card reveals provenance on hover.</div>
+          </div>
+        </div>
+        <div class="page-features">
+          <span class="feature-badge badge-db">PostgreSQL</span>
+          <span class="feature-badge">Advanced filters</span>
+          <span class="feature-badge badge-anim">Stagger reveal</span>
+        </div>
+      </div>
+
+      <div class="page-card">
+        <div class="page-card-header">
+          <div class="page-num">04</div>
+          <div>
+            <div class="page-name">Artifact Sanctum</div>
+            <div class="page-desc">Dedicated artifact page with an interactive 3D model viewer, provenance timeline, related artifacts, and scholarly notes.</div>
+          </div>
+        </div>
+        <div class="page-features">
+          <span class="feature-badge badge-3d">GLB/GLTF viewer</span>
+          <span class="feature-badge badge-anim">360° rotate</span>
+          <span class="feature-badge">AR ready</span>
+        </div>
+      </div>
+
+      <div class="page-card">
+        <div class="page-card-header">
+          <div class="page-num">05</div>
+          <div>
+            <div class="page-name">The Atlas</div>
+            <div class="page-desc">Ancient-styled world map (Mapbox with custom antique tile style). Click regions to fly into civilizations and their artifacts.</div>
+          </div>
+        </div>
+        <div class="page-features">
+          <span class="feature-badge badge-3d">Mapbox GL</span>
+          <span class="feature-badge">Custom map tiles</span>
+          <span class="feature-badge badge-anim">Fly-to animation</span>
+        </div>
+      </div>
+
+      <div class="page-card">
+        <div class="page-card-header">
+          <div class="page-num">06</div>
+          <div>
+            <div class="page-name">Virtual Galleries</div>
+            <div class="page-desc">First-person walkthrough of reconstructed ancient gallery rooms. Artifacts mounted on walls in virtual exhibition halls.</div>
+          </div>
+        </div>
+        <div class="page-features">
+          <span class="feature-badge badge-3d">React Three Fiber</span>
+          <span class="feature-badge">WASD navigation</span>
+          <span class="feature-badge badge-anim">Cinematic intro</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3D & TIMELINE -->
+  <div id="tab-3d" class="tab-panel">
+    <div class="section-label">Immersive Experiences</div>
+    <div class="section-title">3D & Timeline Architecture</div>
+
+    <div class="two-col">
+      <div>
+        <div class="section-label" style="margin-bottom:8px">The Chronicle Timeline</div>
+        <div class="section-desc" style="font-size:13px;margin-bottom:1rem">A horizontal scroll canvas spanning geological to historical time. Civilizations glow into existence as nodes.</div>
+        <div class="timeline-vis">
+          <div class="timeline-line"></div>
+          <div class="timeline-era">
+            <div class="era-date">3.3M BC</div>
+            <div class="era-dot" style="border-color:#8B6914;background:#C9A96E20"></div>
+            <div class="era-content">
+              <div class="era-name">Stone Age</div>
+              <div class="era-civ">Lomekwi, East Africa</div>
+              <div class="era-artifacts">Tools · Pigments · Cave art</div>
+            </div>
+          </div>
+          <div class="timeline-era">
+            <div class="era-date">3100 BC</div>
+            <div class="era-dot" style="border-color:#C9A96E;background:#C9A96E30"></div>
+            <div class="era-content">
+              <div class="era-name">Early Dynastic Egypt</div>
+              <div class="era-civ">Nile Valley Civilisation</div>
+              <div class="era-artifacts">Hieroglyphs · Canopic jars · Statuary</div>
+            </div>
+          </div>
+          <div class="timeline-era">
+            <div class="era-date">2600 BC</div>
+            <div class="era-dot" style="border-color:#D4A017;background:#D4A01730"></div>
+            <div class="era-content">
+              <div class="era-name">Old Kingdom Egypt</div>
+              <div class="era-civ">Memphis · Giza plateau</div>
+              <div class="era-artifacts">Pyramids · Gold masks · Papyri</div>
+            </div>
+          </div>
+          <div class="timeline-era">
+            <div class="era-date">1000 BC</div>
+            <div class="era-dot" style="border-color:#1B3A6B;background:#1B3A6B20"></div>
+            <div class="era-content">
+              <div class="era-name">Iron Age Greece</div>
+              <div class="era-civ">Hellenic city-states</div>
+              <div class="era-artifacts">Pottery · Bronzes · Marble friezes</div>
+            </div>
+          </div>
+          <div class="timeline-era">
+            <div class="era-date">500 BC</div>
+            <div class="era-dot" style="border-color:#C1440E;background:#C1440E20"></div>
+            <div class="era-content">
+              <div class="era-name">Classical Rome & Persia</div>
+              <div class="era-civ">Roman Republic · Achaemenid</div>
+              <div class="era-artifacts">Coins · Armour · Mosaics</div>
+            </div>
+          </div>
+          <div class="timeline-era">
+            <div class="era-date">700 AD</div>
+            <div class="era-dot"></div>
+            <div class="era-content">
+              <div class="era-name">Islamic Golden Age</div>
+              <div class="era-civ">Abbasid Caliphate</div>
+              <div class="era-artifacts">Astronomy · Manuscripts · Ceramics</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-label" style="margin-bottom:8px">3D Artifact Viewer</div>
+        <div class="section-desc" style="font-size:13px;margin-bottom:12px">Each artifact with a 3D model opens a dedicated viewer environment.</div>
+
+        <div class="stack-item" style="margin-bottom:8px">
+          <div class="stack-name">Model Sources</div>
+          <div class="stack-purpose">Smithsonian Open Access, Sketchfab API, Europeana, self-hosted GLB/GLTF files with Draco compression</div>
+        </div>
+        <div class="stack-item" style="margin-bottom:8px">
+          <div class="stack-name">Viewer Features</div>
+          <div class="stack-purpose">Orbit controls, zoom, measurement tool, cross-section plane, annotation pins, material closeup lens, AR export</div>
+        </div>
+        <div class="stack-item" style="margin-bottom:8px">
+          <div class="stack-name">Lighting Setup</div>
+          <div class="stack-purpose">Museum HDRI environment map, directional fill lights, optional spotlight for dramatic presentation mode</div>
+        </div>
+        <div class="stack-item">
+          <div class="stack-name">Fallback Strategy</div>
+          <div class="stack-purpose">High-res photogrammetry images with 360° spin for artifacts without full 3D models. WebP, lazy loaded.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DATABASE -->
+  <div id="tab-database" class="tab-panel">
+    <div class="section-label">Data Architecture</div>
+    <div class="section-title">Artifact Database Schema</div>
+    <div class="section-desc">PostgreSQL with full-text search via pg_trgm and PostGIS for geographic data. Artifacts are richly tagged and cross-referenced.</div>
+
+    <div class="two-col">
+      <div>
+        <div class="schema-table">
+          <div class="schema-header">artifacts</div>
+          <div class="schema-row"><span class="field-name">id</span><span class="field-type">uuid PK</span><span class="field-note">Primary key</span></div>
+          <div class="schema-row"><span class="field-name">name</span><span class="field-type">text</span><span class="field-note">Official artifact name</span></div>
+          <div class="schema-row"><span class="field-name">description</span><span class="field-type">text</span><span class="field-note">Scholarly description</span></div>
+          <div class="schema-row"><span class="field-name">civilization_id</span><span class="field-type">uuid FK</span><span class="field-note">→ civilizations</span></div>
+          <div class="schema-row"><span class="field-name">era_start_bce</span><span class="field-type">int</span><span class="field-note">Earliest date estimate</span></div>
+          <div class="schema-row"><span class="field-name">era_end_bce</span><span class="field-type">int</span><span class="field-note">Latest date estimate</span></div>
+          <div class="schema-row"><span class="field-name">material</span><span class="field-type">text[]</span><span class="field-note">Stone, gold, clay…</span></div>
+          <div class="schema-row"><span class="field-name">type</span><span class="field-type">enum</span><span class="field-note">Sculpture, vessel, scroll…</span></div>
+          <div class="schema-row"><span class="field-name">location_found</span><span class="field-type">geometry</span><span class="field-note">PostGIS point</span></div>
+          <div class="schema-row"><span class="field-name">museum_location</span><span class="field-type">text</span><span class="field-note">Current holding museum</span></div>
+          <div class="schema-row"><span class="field-name">model_url</span><span class="field-type">text</span><span class="field-note">GLB/GLTF asset URL</span></div>
+          <div class="schema-row"><span class="field-name">images</span><span class="field-type">jsonb</span><span class="field-note">High-res image array</span></div>
+          <div class="schema-row"><span class="field-name">dimensions</span><span class="field-type">jsonb</span><span class="field-note">h/w/d in cm + weight</span></div>
+          <div class="schema-row"><span class="field-name">tags</span><span class="field-type">text[]</span><span class="field-note">Full-text search tags</span></div>
+          <div class="schema-row"><span class="field-name">significance</span><span class="field-type">1–5 int</span><span class="field-note">Editorial importance rank</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="schema-table" style="margin-bottom:10px">
+          <div class="schema-header">civilizations</div>
+          <div class="schema-row"><span class="field-name">id</span><span class="field-type">uuid PK</span></div>
+          <div class="schema-row"><span class="field-name">name</span><span class="field-type">text</span><span class="field-note">Egypt, Greece, Mesopotamia…</span></div>
+          <div class="schema-row"><span class="field-name">region</span><span class="field-type">text</span><span class="field-note">Geographic region</span></div>
+          <div class="schema-row"><span class="field-name">period_start</span><span class="field-type">int</span></div>
+          <div class="schema-row"><span class="field-name">period_end</span><span class="field-type">int</span></div>
+          <div class="schema-row"><span class="field-name">color_hex</span><span class="field-type">text</span><span class="field-note">Map & timeline colour</span></div>
+          <div class="schema-row"><span class="field-name">territory</span><span class="field-type">geometry</span><span class="field-note">PostGIS polygon</span></div>
+        </div>
+
+        <div class="schema-table">
+          <div class="schema-header">collections</div>
+          <div class="schema-row"><span class="field-name">id</span><span class="field-type">uuid PK</span></div>
+          <div class="schema-row"><span class="field-name">name</span><span class="field-type">text</span><span class="field-note">Curated collection name</span></div>
+          <div class="schema-row"><span class="field-name">curator_note</span><span class="field-type">text</span></div>
+          <div class="schema-row"><span class="field-name">artifact_ids</span><span class="field-type">uuid[]</span></div>
+          <div class="schema-row"><span class="field-name">theme</span><span class="field-type">enum</span><span class="field-note">Death, Trade, War, Religion…</span></div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="separator">
+    <div class="section-label">Data Sources</div>
+    <div class="stack-grid">
+      <div class="stack-item"><div class="stack-name">Smithsonian Open Access</div><div class="stack-purpose">2.8M digitized objects, 3D models, CC0 license</div></div>
+      <div class="stack-item"><div class="stack-name">Europeana APIs</div><div class="stack-purpose">50M+ European cultural heritage records</div></div>
+      <div class="stack-item"><div class="stack-name">The Met Open Access</div><div class="stack-purpose">470k+ hi-res artifact images, CC0</div></div>
+      <div class="stack-item"><div class="stack-name">Sketchfab API</div><div class="stack-purpose">Community 3D models of artifacts</div></div>
+      <div class="stack-item"><div class="stack-name">Wikidata SPARQL</div><div class="stack-purpose">Structured data, linked artifact records</div></div>
+      <div class="stack-item"><div class="stack-name">IIIF Manifests</div><div class="stack-purpose">Universal standard for museum image APIs</div></div>
+    </div>
+  </div>
+
+  <!-- TECH STACK -->
+  <div id="tab-tech" class="tab-panel">
+    <div class="section-label">Architecture</div>
+    <div class="section-title">Technology Stack</div>
+    <div class="section-desc">Built on the modern web with a strong bias toward performance, accessibility, and immersive 3D without sacrificing load speed.</div>
+
+    <div class="stack-section">
+      <div class="stack-label">Frontend Framework</div>
+      <div class="stack-grid">
+        <div class="stack-item"><div class="stack-name">Next.js 14</div><div class="stack-purpose">App Router, Server Components, ISR for artifact pages</div></div>
+        <div class="stack-item"><div class="stack-name">TypeScript</div><div class="stack-purpose">Strict typing for artifact data models</div></div>
+        <div class="stack-item"><div class="stack-name">Tailwind CSS</div><div class="stack-purpose">Utility base, extended with custom ancient theme tokens</div></div>
+      </div>
+    </div>
+
+    <div class="stack-section">
+      <div class="stack-label">3D & Animation</div>
+      <div class="stack-grid">
+        <div class="stack-item"><div class="stack-name">React Three Fiber</div><div class="stack-purpose">Declarative Three.js — gallery walkthroughs, hero portal, artifact viewer</div></div>
+        <div class="stack-item"><div class="stack-name">Drei</div><div class="stack-purpose">Helper abstractions: OrbitControls, GLTF loader, environment maps</div></div>
+        <div class="stack-item"><div class="stack-name">GSAP + ScrollTrigger</div><div class="stack-purpose">Timeline horizontal scroll, parallax reveal, entrance animations</div></div>
+        <div class="stack-item"><div class="stack-name">Framer Motion</div><div class="stack-purpose">UI micro-interactions, page transitions, stagger effects</div></div>
+        <div class="stack-item"><div class="stack-name">Lenis</div><div class="stack-purpose">Smooth inertial scrolling — essential for the chronicle timeline</div></div>
+        <div class="stack-item"><div class="stack-name">Theatre.js</div><div class="stack-purpose">Cinematic entrance sequences, keyframe-driven 3D camera paths</div></div>
+      </div>
+    </div>
+
+    <div class="stack-section">
+      <div class="stack-label">Data & Backend</div>
+      <div class="stack-grid">
+        <div class="stack-item"><div class="stack-name">PostgreSQL</div><div class="stack-purpose">Primary artifact database with PostGIS + pg_trgm extensions</div></div>
+        <div class="stack-item"><div class="stack-name">Drizzle ORM</div><div class="stack-purpose">Type-safe queries, migrations, schema management</div></div>
+        <div class="stack-item"><div class="stack-name">tRPC</div><div class="stack-purpose">End-to-end typed API layer between Next.js and DB</div></div>
+        <div class="stack-item"><div class="stack-name">Redis</div><div class="stack-purpose">Cache artifact queries, timeline data, 3D asset manifests</div></div>
+        <div class="stack-item"><div class="stack-name">Cloudflare R2</div><div class="stack-purpose">GLB/GLTF model storage, CDN-delivered high-res images</div></div>
+        <div class="stack-item"><div class="stack-name">Meilisearch</div><div class="stack-purpose">Full-text artifact search with faceted filtering</div></div>
+      </div>
+    </div>
+
+    <div class="stack-section">
+      <div class="stack-label">Maps & Spatial</div>
+      <div class="stack-grid">
+        <div class="stack-item"><div class="stack-name">Mapbox GL JS</div><div class="stack-purpose">The Atlas page — custom antique map tile style</div></div>
+        <div class="stack-item"><div class="stack-name">Stamen Watercolor</div><div class="stack-purpose">Painterly map tiles for ancient-look geography</div></div>
+        <div class="stack-item"><div class="stack-name">deck.gl</div><div class="stack-purpose">Artifact density heatmaps, civilization territory overlays</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUILD PLAN -->
+  <div id="tab-build" class="tab-panel">
+    <div class="section-label">Implementation Roadmap</div>
+    <div class="section-title">Six-Phase Build Plan</div>
+    <div class="section-desc">Ordered to unlock value early and manage 3D complexity systematically. Each phase is independently shippable.</div>
+
+    <div class="phase-card">
+      <div class="phase-header">
+        <div class="phase-num">I</div>
+        <div>
+          <div class="phase-title">Foundation & Design System</div>
+          <div class="phase-duration">Week 1–2 · Establish the visual language before all else</div>
+        </div>
+      </div>
+      <div class="phase-tasks">
+        <div class="task-item"><div class="task-dot"></div>Next.js 14 project scaffold with TypeScript</div>
+        <div class="task-item"><div class="task-dot"></div>Tailwind config with all ancient theme tokens</div>
+        <div class="task-item"><div class="task-dot"></div>Typography system: Cinzel + Cormorant installed</div>
+        <div class="task-item"><div class="task-dot"></div>Colour palette, spacing, animation tokens</div>
+        <div class="task-item"><div class="task-dot"></div>Shared component library (buttons, cards, badges)</div>
+        <div class="task-item"><div class="task-dot"></div>Ornamental divider SVG components</div>
+        <div class="task-item"><div class="task-dot"></div>Navigation shell with Cinzel header</div>
+        <div class="task-item"><div class="task-dot"></div>Storybook setup for component documentation</div>
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-header">
+        <div class="phase-num">II</div>
+        <div>
+          <div class="phase-title">Database & Artifact Collection</div>
+          <div class="phase-duration">Week 3–4 · Data before UI, always</div>
+        </div>
+      </div>
+      <div class="phase-tasks">
+        <div class="task-item"><div class="task-dot"></div>PostgreSQL + PostGIS setup</div>
+        <div class="task-item"><div class="task-dot"></div>Drizzle ORM schema from blueprint</div>
+        <div class="task-item"><div class="task-dot"></div>Smithsonian API ingestion script</div>
+        <div class="task-item"><div class="task-dot"></div>The Met Open Access data pipeline</div>
+        <div class="task-item"><div class="task-dot"></div>Meilisearch indexing setup</div>
+        <div class="task-item"><div class="task-dot"></div>Seed 200 curated artifacts across 8 civilizations</div>
+        <div class="task-item"><div class="task-dot"></div>tRPC artifact API routes</div>
+        <div class="task-item"><div class="task-dot"></div>Redis caching layer for list queries</div>
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-header">
+        <div class="phase-num">III</div>
+        <div>
+          <div class="phase-title">Collection & Artifact Pages</div>
+          <div class="phase-duration">Week 5–6 · The core museum experience</div>
+        </div>
+      </div>
+      <div class="phase-tasks">
+        <div class="task-item"><div class="task-dot"></div>Collection grid with masonry layout</div>
+        <div class="task-item"><div class="task-dot"></div>Advanced filter panel (civilization, era, material, type)</div>
+        <div class="task-item"><div class="task-dot"></div>Full-text search with Meilisearch</div>
+        <div class="task-item"><div class="task-dot"></div>Artifact detail page with provenance timeline</div>
+        <div class="task-item"><div class="task-dot"></div>Related artifacts recommendation panel</div>
+        <div class="task-item"><div class="task-dot"></div>Framer Motion stagger reveal on grid load</div>
+        <div class="task-item"><div class="task-dot"></div>Infinite scroll pagination</div>
+        <div class="task-item"><div class="task-dot"></div>ISR with 1hr revalidation for artifact pages</div>
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-header">
+        <div class="phase-num">IV</div>
+        <div>
+          <div class="phase-title">3D Artifact Viewer & Hero</div>
+          <div class="phase-duration">Week 7–9 · The signature immersive layer</div>
+        </div>
+      </div>
+      <div class="phase-tasks">
+        <div class="task-item"><div class="task-dot"></div>React Three Fiber artifact viewer component</div>
+        <div class="task-item"><div class="task-dot"></div>GLTF/GLB model loading with Draco compression</div>
+        <div class="task-item"><div class="task-dot"></div>Orbit controls, annotation pins, measurement UI</div>
+        <div class="task-item"><div class="task-dot"></div>Museum HDRI lighting environment</div>
+        <div class="task-item"><div class="task-dot"></div>Grand Entrance hero with WebGL columns portal</div>
+        <div class="task-item"><div class="task-dot"></div>Particle dust system (floating gold motes)</div>
+        <div class="task-item"><div class="task-dot"></div>Theatre.js cinematic camera intro sequence</div>
+        <div class="task-item"><div class="task-dot"></div>WebXR / AR export for mobile artifact view</div>
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-header">
+        <div class="phase-num">V</div>
+        <div>
+          <div class="phase-title">The Chronicle Timeline & Atlas</div>
+          <div class="phase-duration">Week 10–12 · The signature navigation experiences</div>
+        </div>
+      </div>
+      <div class="phase-tasks">
+        <div class="task-item"><div class="task-dot"></div>GSAP horizontal ScrollTrigger timeline canvas</div>
+        <div class="task-item"><div class="task-dot"></div>Civilization glow nodes on timeline band</div>
+        <div class="task-item"><div class="task-dot"></div>Click-to-artifact detail from timeline nodes</div>
+        <div class="task-item"><div class="task-dot"></div>Mapbox GL with custom antique tile style</div>
+        <div class="task-item"><div class="task-dot"></div>Civilization territory polygon overlays</div>
+        <div class="task-item"><div class="task-dot"></div>Fly-to animation on region click</div>
+        <div class="task-item"><div class="task-dot"></div>Artifact density heatmap with deck.gl</div>
+        <div class="task-item"><div class="task-dot"></div>Time scrubber: watch empires expand/contract</div>
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-header">
+        <div class="phase-num">VI</div>
+        <div>
+          <div class="phase-title">Virtual Galleries & Polish</div>
+          <div class="phase-duration">Week 13–16 · The crowning experience</div>
+        </div>
+      </div>
+      <div class="phase-tasks">
+        <div class="task-item"><div class="task-dot"></div>First-person gallery room with R3F</div>
+        <div class="task-item"><div class="task-dot"></div>WASD / pointer-lock navigation controls</div>
+        <div class="task-item"><div class="task-dot"></div>Artifacts mounted as interactive wall pieces</div>
+        <div class="task-item"><div class="task-dot"></div>Ambient audio engine (reverb by room type)</div>
+        <div class="task-item"><div class="task-dot"></div>Performance audit: 3D LODs, texture compression</div>
+        <div class="task-item"><div class="task-dot"></div>A11y audit: keyboard nav, ARIA for all 3D content</div>
+        <div class="task-item"><div class="task-dot"></div>SEO: structured data (schema.org/VisualArtwork)</div>
+        <div class="task-item"><div class="task-dot"></div>Lighthouse score targets: 90+ on all pages</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function switchTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
