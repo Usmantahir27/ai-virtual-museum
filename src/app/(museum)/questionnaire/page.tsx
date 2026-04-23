@@ -4,9 +4,9 @@ import { useTransparency } from "@/lib/TransparencyContext";
 import Divider from "@/components/ui/Divider";
 
 const FORM_URLS: Record<"A" | "B" | "C", string> = {
-  A: "https://forms.office.com/e/BUaP0P1h0H",
-  B: "https://forms.office.com/e/ZAtpFXiqfb",
-  C: "https://forms.office.com/e/0hbTsC8LnL",
+  A: "https://forms.office.com/e/ePx2txD69L",
+  B: "https://forms.office.com/e/p4Yu61gT31",
+  C: "https://forms.office.com/e/8SG0sFW24n",
 };
 
 export default function QuestionnairePage() {
