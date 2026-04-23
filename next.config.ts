@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   ...(isGitHubPages && {
     output: "export",
-    basePath: "/virtual-museum",
+    basePath: "/ai-virtual-museum",
     images: { unoptimized: true },
   }),
 };
