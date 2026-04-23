@@ -49,7 +49,7 @@ Interactive SVG world map with dual-range era slider showing civilizations activ
 
 Click the button above to clone and deploy this project to Vercel instantly. No configuration needed — the project includes all required settings.
 
-Also deployed on GitHub Pages: [usmantahir27.github.io/virtual-museum](https://usmantahir27.github.io/virtual-museum/)
+Also deployed on GitHub Pages: [usmantahir27.github.io/ai-virtual-museum](https://usmantahir27.github.io/ai-virtual-museum/)
 
 ## About This Project
 
