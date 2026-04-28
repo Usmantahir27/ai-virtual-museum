@@ -247,7 +247,7 @@ export default function TimelineView() {
   return (
     <div className="w-full">
       {/* Timeline row: arrow — track — arrow */}
-      <div className="flex items-center gap-5 px-8 md:px-14">
+      <div className="flex items-center gap-5 px-4 sm:px-6 md:px-14">
         <ArrowButton direction="left" onClick={() => scroll("left")} />
 
         {/* Scrollable timeline — no visible scrollbar */}

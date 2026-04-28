@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function CollectionPage() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24">
+    <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6">
       {/* Header */}
       <div className="text-center">
         <p className="font-display text-xs uppercase tracking-[0.25em] text-gold">

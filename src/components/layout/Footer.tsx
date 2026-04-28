@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="mt-auto">
       <Divider variant="meander" className="mx-auto max-w-5xl px-6" />
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-8">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-8 text-center md:flex-row md:text-left">
         <span className="font-display text-sm tracking-[0.2em] text-parchment/50">
           ARCHAION
         </span>

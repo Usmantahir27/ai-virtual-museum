@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: "Virtual Galleries — Archaion" };
 
 export default function GalleriesPage() {
   return (
-    <section className="mx-auto max-w-5xl px-6 py-24">
+    <section className="mx-auto max-w-5xl px-4 py-24 sm:px-6">
       {/* Header */}
       <div className="text-center">
         <p className="font-display text-xs uppercase tracking-[0.25em] text-gold">

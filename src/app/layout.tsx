@@ -28,6 +28,10 @@ export const metadata: Metadata = {
   },
   description:
     "An immersive digital museum exploring the wonders of the ancient world through interactive exhibits, timelines, and curated collections.",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+  },
 };
 
 export default function RootLayout({

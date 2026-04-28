@@ -14,7 +14,7 @@ export default function QuestionnairePage() {
   const formUrl = FORM_URLS[condition];
 
   return (
-    <section className="mx-auto max-w-5xl px-6 py-24">
+    <section className="mx-auto max-w-5xl px-4 py-24 sm:px-6">
       <p className="font-display text-xs uppercase tracking-[0.25em] text-gold">
         Research
       </p>
@@ -32,7 +32,7 @@ export default function QuestionnairePage() {
 
       <iframe
         src={formUrl}
-        className="mt-10 h-[800px] w-full border border-stone/20 bg-obsidian"
+        className="mt-10 h-[600px] w-full border border-stone/20 bg-obsidian sm:h-[700px] md:h-[800px]"
         title="Research Questionnaire"
         allowFullScreen
       />

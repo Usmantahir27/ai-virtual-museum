@@ -73,7 +73,7 @@ export default function GalleryExperience() {
   const galleryContent = selectedGallery && (
     <>
       {/* Title bar + controls */}
-      <div className="flex items-center justify-between px-4 py-3">
+      <div className="flex flex-col gap-4 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
         <Button
           variant="ghost"
           size="sm"
@@ -107,7 +107,7 @@ export default function GalleryExperience() {
       </div>
 
       {/* Gallery + info panel */}
-      <div className="relative flex flex-1 overflow-hidden">
+      <div className="relative flex flex-col overflow-hidden sm:flex-row">
         {/* 3D Gallery */}
         <div className={selectedArtifact ? "flex-1" : "w-full"} style={{ minHeight: isFullscreen ? "calc(100vh - 56px)" : 500 }}>
           <GalleryRoom
@@ -125,7 +125,7 @@ export default function GalleryExperience() {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: 300, opacity: 0 }}
               transition={transitions.stone}
-              className="w-80 shrink-0 overflow-y-auto border-l border-stone/20 bg-obsidian/95 backdrop-blur-sm"
+              className="w-full shrink-0 overflow-y-auto border-t border-stone/20 bg-obsidian/95 backdrop-blur-sm sm:border-t-0 sm:border-l sm:w-80"
             >
               <div className="p-5">
                 <button

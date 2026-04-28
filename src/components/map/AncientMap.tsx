@@ -105,7 +105,7 @@ export default function AncientMap() {
     <div className="relative w-full">
       {/* SVG Map */}
       <div className="relative overflow-hidden rounded border border-stone/20 bg-[#0f1923]">
-        <svg viewBox="0 0 900 500" className="w-full" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 900 500" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
           <rect width="900" height="500" fill="#0f1923" />
 
           {Array.from({ length: 9 }, (_, i) => (
@@ -178,7 +178,7 @@ export default function AncientMap() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
               transition={transitions.stone}
-              className="absolute right-4 top-4 z-10 w-72 rounded border border-stone/30 bg-obsidian/95 p-5 shadow-lg backdrop-blur-sm"
+              className="absolute right-2 top-4 left-2 z-10 w-[calc(100%-1rem)] max-w-[18rem] rounded border border-stone/30 bg-obsidian/95 p-5 shadow-lg backdrop-blur-sm sm:right-4 sm:left-auto sm:w-72"
             >
               <button
                 onClick={() => setSelectedCiv(null)}

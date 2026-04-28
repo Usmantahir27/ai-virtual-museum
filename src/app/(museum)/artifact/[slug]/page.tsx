@@ -184,7 +184,7 @@ export default async function ArtifactPage({ params }: ArtifactPageProps) {
     }));
 
   return (
-    <article className="mx-auto max-w-6xl px-6 py-16">
+    <article className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
       {/* ---- Header ---- */}
       <header className="mb-12">
         <p className="font-display text-xs uppercase tracking-[0.25em] text-gold">
@@ -205,7 +205,7 @@ export default async function ArtifactPage({ params }: ArtifactPageProps) {
       <div className="grid gap-8 lg:grid-cols-3">
         {/* Viewer — 2/3 width */}
         <div className="lg:col-span-2">
-          <div className="h-[500px] overflow-hidden border border-stone/20 bg-obsidian">
+          <div className="h-[400px] overflow-hidden border border-stone/20 bg-obsidian sm:h-[500px]">
             {artifact.imageUrl ? (
               <img
                 src={artifact.imageUrl}

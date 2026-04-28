@@ -98,7 +98,7 @@ export default function HomePage() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-obsidian/40 via-transparent to-obsidian/80" />
 
         {/* Hero content */}
-        <div className="relative z-10 flex flex-col items-center px-6 text-center">
+        <div className="relative z-10 flex flex-col items-center px-4 text-center sm:px-6">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -112,8 +112,8 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...transitions.goldReveal, delay: 0.5 }}
-            className="mt-4 font-display text-7xl tracking-[0.04em] text-gold md:text-9xl"
-            style={{ lineHeight: 1.1 }}
+            className="mt-4 font-display text-5xl tracking-[0.04em] text-gold sm:text-7xl md:text-9xl"
+            style={{ lineHeight: 1.05 }}
           >
             ARCHAION
           </motion.h1>
@@ -122,7 +122,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...transitions.goldReveal, delay: 0.8 }}
-            className="mt-6 max-w-lg font-body text-xl leading-relaxed text-parchment/80 md:text-2xl"
+            className="mt-6 max-w-lg font-body text-base leading-relaxed text-parchment/80 sm:text-xl md:text-2xl"
           >
             A Digital Sanctuary of Human Antiquity
           </motion.p>
@@ -149,7 +149,7 @@ export default function HomePage() {
       <Divider variant="meander" className="mx-auto max-w-2xl" />
 
       {/* ── Featured Artifacts Section ── */}
-      <section className="mx-auto max-w-6xl px-6 py-24">
+      <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
         <motion.div
           initial="hidden"
           whileInView="visible"
