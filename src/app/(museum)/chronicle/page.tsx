@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: "The Chronicle | Archaion" };
 
 export default function ChroniclePage() {
   return (
-    <section className="w-full py-24">
+    <section className="w-full py-24 pt-32 sm:pt-28">
       {/* Header */}
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
         <p className="font-display text-xs uppercase tracking-[0.25em] text-gold">

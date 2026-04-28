@@ -184,7 +184,7 @@ export default async function ArtifactPage({ params }: ArtifactPageProps) {
     }));
 
   return (
-    <article className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <article className="mx-auto max-w-6xl px-4 py-16 pt-32 sm:px-6 sm:pt-28">
       {/* ---- Header ---- */}
       <header className="mb-12">
         <p className="font-display text-xs uppercase tracking-[0.25em] text-gold">

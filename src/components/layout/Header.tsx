@@ -32,54 +32,56 @@ export default function Header() {
   }, [mobileOpen]);
 
   return (
-    <motion.header
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={transitions.stone}
-      className={clsx(
-        "fixed top-0 z-40 w-full transition-colors duration-[600ms]",
-        scrolled ? "bg-obsidian/95 backdrop-blur-sm" : "bg-transparent",
-      )}
-    >
-      <nav className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-5 sm:px-6">
-        <Link
-          href="/"
-          className="font-display text-xl tracking-[0.25em] text-gold transition-colors hover:text-parchment"
-        >
-          ARCHAION
-        </Link>
+    <>
+      <motion.header
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={transitions.stone}
+        className={clsx(
+          "fixed top-0 z-40 w-full transition-colors duration-[600ms]",
+          scrolled ? "bg-obsidian/95 backdrop-blur-sm" : "bg-transparent",
+        )}
+      >
+        <nav className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-5 sm:px-6">
+          <Link
+            href="/"
+            className="font-display text-xl tracking-[0.25em] text-gold transition-colors hover:text-parchment"
+          >
+            ARCHAION
+          </Link>
 
-        <button
-          type="button"
-          aria-label={mobileOpen ? "Close navigation" : "Open navigation"}
-          className="md:hidden inline-flex h-11 w-11 items-center justify-center rounded border border-stone/30 text-parchment transition hover:border-gold/60"
-          onClick={() => setMobileOpen((current) => !current)}
-        >
-          {mobileOpen ? (
-            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M6 6l12 12M6 18L18 6" />
-            </svg>
-          ) : (
-            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 7h16M4 12h16M4 17h16" />
-            </svg>
-          )}
-        </button>
+          <button
+            type="button"
+            aria-label={mobileOpen ? "Close navigation" : "Open navigation"}
+            className="md:hidden inline-flex h-11 w-11 items-center justify-center rounded border border-stone/30 text-parchment transition hover:border-gold/60"
+            onClick={() => setMobileOpen((current) => !current)}
+          >
+            {mobileOpen ? (
+              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M6 6l12 12M6 18L18 6" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 7h16M4 12h16M4 17h16" />
+              </svg>
+            )}
+          </button>
 
-        <ul className="hidden items-center gap-8 md:flex">
-          {navLinks.map(({ href, label }) => (
-            <li key={href}>
-              <Link
-                href={href}
-                className="group relative font-display text-xs uppercase tracking-[0.15em] text-parchment/70 transition-colors hover:text-parchment"
-              >
-                {label}
-                <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-[400ms] ease-[cubic-bezier(0.43,0.13,0.23,0.96)] group-hover:w-full" />
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+          <ul className="hidden items-center gap-8 md:flex">
+            {navLinks.map(({ href, label }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className="group relative font-display text-xs uppercase tracking-[0.15em] text-parchment/70 transition-colors hover:text-parchment"
+                >
+                  {label}
+                  <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-[400ms] ease-[cubic-bezier(0.43,0.13,0.23,0.96)] group-hover:w-full" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </motion.header>
 
       {mobileOpen && (
         <div className="fixed inset-0 z-50 overflow-y-auto bg-obsidian/95 px-6 py-6 sm:px-8">
@@ -117,6 +119,6 @@ export default function Header() {
           </div>
         </div>
       )}
-    </motion.header>
+    </>
   );
 }

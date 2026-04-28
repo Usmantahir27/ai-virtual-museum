@@ -149,7 +149,7 @@ export default function HomePage() {
       <Divider variant="meander" className="mx-auto max-w-2xl" />
 
       {/* ── Featured Artifacts Section ── */}
-      <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
+      <section className="mx-auto max-w-6xl px-4 py-24 pt-32 sm:px-6 sm:pt-28">
         <motion.div
           initial="hidden"
           whileInView="visible"

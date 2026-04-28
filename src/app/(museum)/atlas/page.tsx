@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "The Atlas — Archaion" };
 
 export default function AtlasPage() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
+    <section className="mx-auto max-w-6xl px-4 py-24 pt-32 sm:px-6 sm:pt-28">
       {/* Header */}
       <div className="text-center">
         <p className="font-display text-xs uppercase tracking-[0.25em] text-gold">
